@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <cuda_runtime.h>
-#include <cutensor.h>
+//#include <cuda_runtime.h>
+//#include <cutensor.h>
 
 #include <unordered_map>
 #include <vector>
