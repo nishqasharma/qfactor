@@ -1,4 +1,4 @@
-#include <stdlib.h>
+/* #include <stdlib.h>
 #include <stdio.h>
 
 #include <cuda_runtime.h>
@@ -34,7 +34,7 @@ int main(int argc, char** argv)
 
   printf("Include headers and define data types\n");
 
-  /* ***************************** */
+  //=====================
 
   // Create vector of modes
   std::vector<int> modeC{'m','u','n','v'};
@@ -66,7 +66,7 @@ int main(int argc, char** argv)
 
   printf("Define modes and extents\n");
 
-  /* ***************************** */
+  // ============================
 
   // Number of elements of each tensor
   size_t elementsA = 1;
@@ -110,7 +110,7 @@ int main(int argc, char** argv)
 
   printf("Allocate, initialize and transfer tensors\n");
 
-  /* ***************************** */
+  // ==============================
 
   // Initialize cuTENSOR library
   cutensorHandle_t handle;
@@ -122,7 +122,7 @@ int main(int argc, char** argv)
               &descA,
               nmodeA,
               extentA.data(),
-              NULL,/*stride*/
+              NULL,// stride
               typeA, CUTENSOR_OP_IDENTITY ) );
 
   cutensorTensorDescriptor_t descB;
@@ -130,7 +130,7 @@ int main(int argc, char** argv)
               &descB,
               nmodeB,
               extentB.data(),
-              NULL,/*stride*/
+              NULL,//stride
               typeB, CUTENSOR_OP_IDENTITY ) );
 
   cutensorTensorDescriptor_t descC;
@@ -138,12 +138,12 @@ int main(int argc, char** argv)
               &descC,
               nmodeC,
               extentC.data(),
-              NULL,/*stride*/
+              NULL,//stride
               typeC, CUTENSOR_OP_IDENTITY ) );
 
   printf("Initialize cuTENSOR and tensor descriptors\n");
 
-  /* ***************************** */
+  // ==========================
 
    //Retrieve the memory alignment for each tensor
    uint32_t alignmentRequirementA;
@@ -166,7 +166,7 @@ int main(int argc, char** argv)
 
   printf("Query best alignment requirement for our pointers\n");
 
-  /* ***************************** */
+  // ====================================
 
   // Create the Contraction Descriptor
   cutensorContractionDescriptor_t desc;
@@ -180,8 +180,7 @@ int main(int argc, char** argv)
 
   printf("Initialize contraction descriptor\n");
 
-  /* ***************************** */
-
+  // ==================================
   // Set the algorithm to use
   cutensorContractionFind_t find;
   HANDLE_ERROR( cutensorInitContractionFind(
@@ -190,7 +189,7 @@ int main(int argc, char** argv)
 
   printf("Initialize settings to find algorithm\n");
 
-  /* ***************************** */
+  // =================================
 
   // Query workspace
   size_t worksize = 0;
@@ -212,7 +211,7 @@ int main(int argc, char** argv)
 
   printf("Query recommended workspace size and allocate it\n");
 
-  /* ***************************** */
+  // ===============================
 
   // Create Contraction Plan
   cutensorContractionPlan_t plan;
@@ -224,7 +223,7 @@ int main(int argc, char** argv)
 
   printf("Create plan for contraction\n");
 
-  /* ***************************** */
+  // ================================
 
   cutensorStatus_t err;
 
@@ -235,7 +234,7 @@ int main(int argc, char** argv)
                                     B_d,
                      (void*)&beta,  C_d,
                                     C_d,
-                            work, worksize, 0 /* stream */);
+                            work, worksize, 0 // stream );
   cudaDeviceSynchronize();
 
   // Check for errors
@@ -246,7 +245,7 @@ int main(int argc, char** argv)
 
   printf("Execute contraction from plan\n");
 
-  /* ***************************** */
+  // ============================
 
   if ( A ) free( A );
   if ( B ) free( B );
@@ -257,6 +256,34 @@ int main(int argc, char** argv)
   if ( work ) cudaFree( work );
 
   printf("Successful completion\n");
+
+  return 0;
+} */
+
+#include <stdlib.h>
+#include <stdio.h>
+
+#include <cuda_runtime.h>
+#include <cutensor.h>
+
+int main(int argc, char** argv)
+{
+  // Host element type definition
+  typedef float floatTypeA;
+  typedef float floatTypeB;
+  typedef float floatTypeC;
+  typedef float floatTypeCompute;
+
+  // CUDA types
+  cudaDataType_t typeA = CUDA_R_32F;
+  cudaDataType_t typeB = CUDA_R_32F;
+  cudaDataType_t typeC = CUDA_R_32F;
+  cutensorComputeType_t typeCompute = CUTENSOR_COMPUTE_32F;
+
+  floatTypeCompute alpha = (floatTypeCompute)1.1f;
+  floatTypeCompute beta  = (floatTypeCompute)0.9f;
+
+  printf("Include headers and define data types\n");
 
   return 0;
 }
