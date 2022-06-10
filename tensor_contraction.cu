@@ -264,7 +264,7 @@ int main(int argc, char** argv)
 #include <stdio.h>
 
 #include <cuda_runtime.h>
-#include <cutensor.h>
+//#include <cutensor.h>
 
 int main(int argc, char** argv)
 {
