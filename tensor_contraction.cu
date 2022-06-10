@@ -3,6 +3,7 @@
 
 //#include <cuda_runtime.h>
 //#include <cutensor.h>
+#include<cuda.h>
 
 #include <unordered_map>
 #include <vector>
