@@ -1,4 +1,4 @@
-/* #include <stdlib.h>
+ #include <stdlib.h>
 #include <stdio.h>
 
 #include <cuda_runtime.h>
@@ -258,9 +258,9 @@ int main(int argc, char** argv)
   printf("Successful completion\n");
 
   return 0;
-} */
+} 
 
-#include <stdlib.h>
+/*#include <stdlib.h>
 #include <stdio.h>
 
 #include <cuda_runtime.h>
@@ -286,4 +286,4 @@ int main(int argc, char** argv)
   printf("Include headers and define data types\n");
 
   return 0;
-}
+}*/
