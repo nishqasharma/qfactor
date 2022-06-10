@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 //#include <cuda_runtime.h>
-//#include <cutensor.h>
+#include <cutensor.h>
 #include<cuda.h>
 
 #include <unordered_map>
