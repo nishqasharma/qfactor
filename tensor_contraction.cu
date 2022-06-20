@@ -303,9 +303,27 @@ int main(int argc, char** argv)
 
   // ============================
 
-  /*cudaMemcpy(C_d, C, sizeC, cudaMemcpyDeviceToHost);
-  cudaMemcpy(A_d, A, sizeA, cudaMemcpyDeviceToHost);
-  cudaMemcpy(B_d, B, sizeB, cudaMemcpyDeviceToHost);*/
+  floatTypeA *A_res = (floatTypeA*) malloc(sizeof(floatTypeA) * elementsA);
+  floatTypeB *B_res = (floatTypeB*) malloc(sizeof(floatTypeB) * elementsB);
+  floatTypeC *C_res = (floatTypeC*) malloc(sizeof(floatTypeC) * elementsC);
+
+  cudaMemcpy(C_d, C_res, sizeC, cudaMemcpyDeviceToHost);
+  cudaMemcpy(A_d, A_res, sizeA, cudaMemcpyDeviceToHost);
+  cudaMemcpy(B_d, B_res, sizeB, cudaMemcpyDeviceToHost);
+
+  for(int64_t i = 0; i < elementsC; i++)
+    std::cout << C_res[i] << " "
+
+  std::cout << "\n"
+
+  for(int64_t i = 0; i < 8; i++)
+  {
+    for(int64_t j = 0; j <8; j++)
+    {
+        std::cout << C_res[i*8 + j] << " ";
+    }
+  }
+  std::cout << "\n";
 
   if ( A ) free( A );
   if ( B ) free( B );
