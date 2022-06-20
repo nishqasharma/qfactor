@@ -1,5 +1,6 @@
  #include <stdlib.h>
 #include <stdio.h>
+#include <iostream>
 
 #include <cuda_runtime.h>
 #include <cutensor.h>
