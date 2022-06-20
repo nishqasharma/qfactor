@@ -25,6 +25,13 @@ void print(std::vector <int> const &a) {
    std::cout << "\n";
 }
 
+void print_map(std::unordered_map<K, V> const &m)
+{
+    for (auto const &pair: m) {
+        std::cout << "{" << pair.first << ": " << pair.second << "}\n";
+    }
+}
+
 int main(int argc, char** argv)
 {
   // Host element type definition
@@ -57,11 +64,11 @@ int main(int argc, char** argv)
   std::cout << "modeB: ";
   print(modeB);
   int nmodeA = modeA.size();
-  std::cout << "int nmodeA is: " << nmodeA;
+  std::cout << "int nmodeA is: " << nmodeA << "\n";
   int nmodeB = modeB.size();
-  std::cout << "int nmodeB is: " << nmodeB;
+  std::cout << "int nmodeB is: " << nmodeB << "\n";
   int nmodeC = modeC.size();
-  std::cout << "int nmodeC is: " << nmodeC;
+  std::cout << "int nmodeC is: " << nmodeC << "\n";
 
   // Extents--size of each axis, ie the index runs from 0 to extent-1
   std::unordered_map<int, int64_t> extent;
@@ -73,6 +80,8 @@ int main(int argc, char** argv)
   extent['k'] = 2;
   extent['a'] = 2;
   extent['b'] = 2;
+
+  print_map(extent);
 
   // Create a vector of extents for each tensor
   std::vector<int64_t> extentC;
