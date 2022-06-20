@@ -53,7 +53,7 @@ int main(int argc, char** argv)
   cudaDataType_t typeA = CUDA_R_32F;
   cudaDataType_t typeB = CUDA_R_32F;
   cudaDataType_t typeC = CUDA_R_32F;
-  cutensorComputeType_t typeCompute = CUTENSOR_COMPUTE_32I;
+  cutensorComputeType_t typeCompute = CUTENSOR_COMPUTE_32F;
 
   floatTypeCompute alpha = (floatTypeCompute)1.0f;
   floatTypeCompute beta  = (floatTypeCompute)0.0f;
