@@ -311,16 +311,16 @@ int main(int argc, char** argv)
   cudaMemcpy(A_d, A_res, sizeA, cudaMemcpyDeviceToHost);
   cudaMemcpy(B_d, B_res, sizeB, cudaMemcpyDeviceToHost);
 
-  for(int64_t i = 0; i < elementsC; i++)
+  /*for(int64_t i = 0; i < elementsC; i++)
     std::cout << C_res[i] << " ";
 
-  std::cout << "\n";
+  std::cout << "\n";*/
 
   for(int64_t i = 0; i < 8; i++)
   {
     for(int64_t j = 0; j <8; j++)
     {
-        std::cout << C_res[i*8 + j] << " ";
+        std::cout << C_res[i*8 + j] << "\t\t";
     }
     std::cout << "\n";
   }
