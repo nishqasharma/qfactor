@@ -45,7 +45,7 @@ int main(int argc, char** argv)
 
   // Create vector of modes--ie, indices along each axis of tensor
   std::vector<int> modeC{'a','b','m','u','n','v'};
-  print(modeC)
+  print(modeC);
   std::vector<int> modeA{'a','b','m','h','k','n'};
   std::vector<int> modeB{'u','k','v','h'};
   int nmodeA = modeA.size();
@@ -265,9 +265,9 @@ int main(int argc, char** argv)
   if ( C_d ) cudaFree( C_d );
   if ( work ) cudaFree( work );
 
-  printf("Successful completion\n");
+  printf("Successful completion\n");*/
 
-  return 0;
+  return 0; 
 } 
 
 /*#include <stdlib.h>
