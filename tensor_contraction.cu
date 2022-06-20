@@ -322,6 +322,7 @@ int main(int argc, char** argv)
     {
         std::cout << C_res[i*8 + j] << " ";
     }
+    std::cout << "\n";
   }
   std::cout << "\n";
 
