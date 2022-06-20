@@ -73,7 +73,7 @@ int main(int argc, char** argv)
   // Extents--size of each axis, ie the index runs from 0 to extent-1
   std::unordered_map<int, int64_t> extent;
   extent['m'] = 2;
-  std::cout << extent['m'] << "\n";
+  std::cout << "extent['m'] is: " << extent['m'] << "\n";
   extent['n'] = 2;
   extent['u'] = 2;
   extent['v'] = 2;
