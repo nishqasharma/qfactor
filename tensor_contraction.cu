@@ -314,7 +314,7 @@ int main(int argc, char** argv)
   for(int64_t i = 0; i < elementsC; i++)
     std::cout << C_res[i] << " "
 
-  std::cout << "\n"
+  std::cout << "\n";
 
   for(int64_t i = 0; i < 8; i++)
   {
