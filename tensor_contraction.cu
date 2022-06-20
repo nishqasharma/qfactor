@@ -95,6 +95,13 @@ int main(int argc, char** argv)
   for(auto mode : modeB)
       extentB.push_back(extent[mode]);
 
+  std::cout << "extentC: "; 
+  print(extentC);
+  std::cout << "extentB: "; 
+  print(extentB);
+  std::cout << "extentA: "; 
+  print(extentA);
+
   printf("Define modes and extents\n");
 
   // ============================
