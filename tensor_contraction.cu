@@ -15,6 +15,13 @@
   { printf("Error: %s in line %d\n", cutensorGetErrorString(err), __LINE__); exit(-1); } \
 }
 
+void print(std::vector <int> const &a) {
+   std::cout << "The vector elements are : ";
+
+   for(int i=0; i < a.size(); i++)
+   std::cout << a.at(i) << ' ';
+}
+
 int main(int argc, char** argv)
 {
   // Host element type definition
@@ -36,22 +43,25 @@ int main(int argc, char** argv)
 
   //=====================
 
-  // Create vector of modes
-  std::vector<int> modeC{'m','u','n','v'};
-  std::vector<int> modeA{'m','h','k','n'};
+  // Create vector of modes--ie, indices along each axis of tensor
+  std::vector<int> modeC{'a','b','m','u','n','v'};
+  print(modeC)
+  std::vector<int> modeA{'a','b','m','h','k','n'};
   std::vector<int> modeB{'u','k','v','h'};
   int nmodeA = modeA.size();
   int nmodeB = modeB.size();
   int nmodeC = modeC.size();
 
-  // Extents
+  // Extents--size of each axis, ie the index runs from 0 to extent-1
   std::unordered_map<int, int64_t> extent;
-  extent['m'] = 96;
-  extent['n'] = 96;
-  extent['u'] = 96;
-  extent['v'] = 64;
-  extent['h'] = 64;
-  extent['k'] = 64;
+  extent['m'] = 2;
+  extent['n'] = 2;
+  extent['u'] = 2;
+  extent['v'] = 2;
+  extent['h'] = 2;
+  extent['k'] = 2;
+  extent['a'] = 2;
+  extent['b'] = 2;
 
   // Create a vector of extents for each tensor
   std::vector<int64_t> extentC;
@@ -69,7 +79,7 @@ int main(int argc, char** argv)
   // ============================
 
   // Number of elements of each tensor
-  size_t elementsA = 1;
+  /*size_t elementsA = 1;
   for(auto mode : modeA)
       elementsA *= extent[mode];
   size_t elementsB = 1;
