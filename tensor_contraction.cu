@@ -25,6 +25,15 @@ void print(std::vector <int> const &a) {
    std::cout << "\n";
 }
 
+void print_64(std::vector <int64_t> const &a) {
+   //std::cout << "The vector elements are : ";
+
+   for(int i=0; i < a.size(); i++)
+   std::cout << a.at(i) << ' ';
+
+   std::cout << "\n";
+}
+
 /*void print_map(std::unordered_map<K, V> const &m)
 {
     for (auto const &pair: m) {
@@ -96,11 +105,11 @@ int main(int argc, char** argv)
       extentB.push_back(extent[mode]);
 
   std::cout << "extentC: "; 
-  print(extentC);
+  print_64(extentC);
   std::cout << "extentB: "; 
-  print(extentB);
+  print_64(extentB);
   std::cout << "extentA: "; 
-  print(extentA);
+  print_64(extentA);
 
   printf("Define modes and extents\n");
 
