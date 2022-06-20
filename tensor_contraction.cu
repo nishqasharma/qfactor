@@ -53,10 +53,10 @@ int main(int argc, char** argv)
   cudaDataType_t typeA = CUDA_R_32F;
   cudaDataType_t typeB = CUDA_R_32F;
   cudaDataType_t typeC = CUDA_R_32F;
-  cutensorComputeType_t typeCompute = CUTENSOR_COMPUTE_32F;
+  cutensorComputeType_t typeCompute = CUTENSOR_COMPUTE_32I;
 
-  floatTypeCompute alpha = (floatTypeCompute)1.1f;
-  floatTypeCompute beta  = (floatTypeCompute)0.9f;
+  floatTypeCompute alpha = (floatTypeCompute)1.0f;
+  floatTypeCompute beta  = (floatTypeCompute)0.0f;
 
   printf("Include headers and define data types\n");
 
@@ -153,11 +153,11 @@ int main(int argc, char** argv)
 
   // Initialize data on host
   for(int64_t i = 0; i < elementsA; i++)
-      A[i] = i+1; //A runs from 1 to 64
+      A[i] = floatTypeA(i+1); //A runs from 1 to 64
   for(int64_t i = 0; i < elementsB; i++)
-      B[i] = -1*i;  //B is all -1's, just to see which elements actually got manipulated
+      B[i] = floatTypeB(-1*i);  //B is all -1's, just to see which elements actually got manipulated
   for(int64_t i = 0; i < elementsC; i++)
-      C[i] = 0;  //we initially put these elements to 0, the contraction will actually fill them up
+      C[i] = floatTypeC(0);  //we initially put these elements to 0, the contraction will actually fill them up
 
   // Copy to device
   cudaMemcpy(C_d, C, sizeC, cudaMemcpyHostToDevice);
