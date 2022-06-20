@@ -312,7 +312,7 @@ int main(int argc, char** argv)
   cudaMemcpy(B_d, B_res, sizeB, cudaMemcpyDeviceToHost);
 
   for(int64_t i = 0; i < elementsC; i++)
-    std::cout << C_res[i] << " "
+    std::cout << C_res[i] << " ";
 
   std::cout << "\n";
 
