@@ -116,7 +116,9 @@ int main(int argc, char** argv)
   // ============================
 
   // Number of elements of each tensor
-  /*size_t elementsA = 1;
+  //size_t is unsigned integer type in C/C++
+  //multiply the size of each dimension in the tensor
+  size_t elementsA = 1;
   for(auto mode : modeA)
       elementsA *= extent[mode];
   size_t elementsB = 1;
@@ -125,6 +127,10 @@ int main(int argc, char** argv)
   size_t elementsC = 1;
   for(auto mode : modeC)
       elementsC *= extent[mode];
+
+  std::cout << "int elementsA is: " << elementsA << "\n";
+  std::cout << "int elementsB is: " << elementsB << "\n";
+  std::cout << "int elementsC is: " << elementsC << "\n";
 
   // Size in bytes
   size_t sizeA = sizeof(floatTypeA) * elementsA;
@@ -138,17 +144,20 @@ int main(int argc, char** argv)
   cudaMalloc((void**)&C_d, sizeC);
 
   // Allocate on host
+  //A is the old circuit
+  //B is the gate
+  //C is the circuit after applying the gate
   floatTypeA *A = (floatTypeA*) malloc(sizeof(floatTypeA) * elementsA);
   floatTypeB *B = (floatTypeB*) malloc(sizeof(floatTypeB) * elementsB);
   floatTypeC *C = (floatTypeC*) malloc(sizeof(floatTypeC) * elementsC);
 
   // Initialize data on host
   for(int64_t i = 0; i < elementsA; i++)
-      A[i] = (((float) rand())/RAND_MAX - 0.5)*100;
+      A[i] = i+1; //A runs from 1 to 64
   for(int64_t i = 0; i < elementsB; i++)
-      B[i] = (((float) rand())/RAND_MAX - 0.5)*100;
+      B[i] = -1;  //B is all -1's, just to see which elements actually got manipulated
   for(int64_t i = 0; i < elementsC; i++)
-      C[i] = (((float) rand())/RAND_MAX - 0.5)*100;
+      C[i] = 0;  //we initially put these elements to 0, the contraction will actually fill them up
 
   // Copy to device
   cudaMemcpy(C_d, C, sizeC, cudaMemcpyHostToDevice);
