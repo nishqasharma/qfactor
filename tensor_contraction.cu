@@ -57,11 +57,11 @@ int main(int argc, char** argv)
   std::cout << "modeB: ";
   print(modeB);
   int nmodeA = modeA.size();
-  std::cout << "int nmodeA is: " << nModeA
+  std::cout << "int nmodeA is: " << nModeA;
   int nmodeB = modeB.size();
-  std::cout << "int nmodeB is: " << nModeB
+  std::cout << "int nmodeB is: " << nModeB;
   int nmodeC = modeC.size();
-  std::cout << "int nmodeC is: " << nModeC
+  std::cout << "int nmodeC is: " << nModeC;
 
   // Extents--size of each axis, ie the index runs from 0 to extent-1
   std::unordered_map<int, int64_t> extent;
