@@ -155,7 +155,7 @@ int main(int argc, char** argv)
   for(int64_t i = 0; i < elementsA; i++)
       A[i] = i+1; //A runs from 1 to 64
   for(int64_t i = 0; i < elementsB; i++)
-      B[i] = -1;  //B is all -1's, just to see which elements actually got manipulated
+      B[i] = -1*i;  //B is all -1's, just to see which elements actually got manipulated
   for(int64_t i = 0; i < elementsC; i++)
       C[i] = 0;  //we initially put these elements to 0, the contraction will actually fill them up
 
@@ -169,7 +169,7 @@ int main(int argc, char** argv)
   // ==============================
 
   // Initialize cuTENSOR library
-  /*cutensorHandle_t handle;
+  cutensorHandle_t handle;
   cutensorInit(&handle);
 
   // Create Tensor Descriptors
@@ -177,7 +177,7 @@ int main(int argc, char** argv)
   HANDLE_ERROR( cutensorInitTensorDescriptor( &handle,
               &descA,
               nmodeA,
-              extentA.data(),
+              extentA.data(), //The std::vector::data() is an STL in C++ which returns a direct pointer to the memory array used internally by the vector to store its owned elements.
               NULL,// stride
               typeA, CUTENSOR_OP_IDENTITY ) );
 
@@ -303,6 +303,10 @@ int main(int argc, char** argv)
 
   // ============================
 
+  /*cudaMemcpy(C_d, C, sizeC, cudaMemcpyDeviceToHost);
+  cudaMemcpy(A_d, A, sizeA, cudaMemcpyDeviceToHost);
+  cudaMemcpy(B_d, B, sizeB, cudaMemcpyDeviceToHost);*/
+
   if ( A ) free( A );
   if ( B ) free( B );
   if ( C ) free( C );
@@ -311,7 +315,7 @@ int main(int argc, char** argv)
   if ( C_d ) cudaFree( C_d );
   if ( work ) cudaFree( work );
 
-  printf("Successful completion\n");*/
+  printf("Successful completion\n");
 
   return 0; 
 } 
