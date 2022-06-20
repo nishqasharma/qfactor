@@ -25,12 +25,12 @@ void print(std::vector <int> const &a) {
    std::cout << "\n";
 }
 
-void print_map(std::unordered_map<K, V> const &m)
+/*void print_map(std::unordered_map<K, V> const &m)
 {
     for (auto const &pair: m) {
         std::cout << "{" << pair.first << ": " << pair.second << "}\n";
     }
-}
+}*/
 
 int main(int argc, char** argv)
 {
@@ -73,6 +73,7 @@ int main(int argc, char** argv)
   // Extents--size of each axis, ie the index runs from 0 to extent-1
   std::unordered_map<int, int64_t> extent;
   extent['m'] = 2;
+  std::cout << extent['m'] << "\n";
   extent['n'] = 2;
   extent['u'] = 2;
   extent['v'] = 2;
@@ -81,7 +82,7 @@ int main(int argc, char** argv)
   extent['a'] = 2;
   extent['b'] = 2;
 
-  print_map(extent);
+  //print_map(extent);
 
   // Create a vector of extents for each tensor
   std::vector<int64_t> extentC;
