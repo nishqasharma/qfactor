@@ -320,7 +320,7 @@ int main(int argc, char** argv)
   {
     for(int64_t j = 0; j <8; j++)
     {
-        std::cout << C_res[i*8 + j] << "\t";
+        std::cout << int(C_res[i*8 + j]) << " ";
     }
     std::cout << "\n";
   }
