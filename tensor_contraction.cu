@@ -234,7 +234,7 @@ int main(int argc, char** argv)
                                     B_d,
                      (void*)&beta,  C_d,
                                     C_d,
-                            work, worksize, 0 // stream );
+                            work, worksize, 0); // stream );
   cudaDeviceSynchronize();
 
   // Check for errors
