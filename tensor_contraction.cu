@@ -172,7 +172,7 @@ int main(int argc, char** argv)
   {
     for(int64_t j = 0; j <8; j++)
     {
-        std::cout << B[i*8 + j] << " ";
+        std::cout << A[i*8 + j] << " ";
     }
     std::cout << "\n";
   }
@@ -182,7 +182,7 @@ int main(int argc, char** argv)
   {
     for(int64_t j = 0; j <4; j++)
     {
-        std::cout << C[i*4 + j] << " ";
+        std::cout << B[i*4 + j] << " ";
     }
     std::cout << "\n";
   }
