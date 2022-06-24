@@ -82,14 +82,21 @@ int main(int argc, char** argv)
   // Extents--size of each axis, ie the index runs from 0 to extent-1
   std::unordered_map<int, int64_t> extent;
   extent['a'] = 2;
-  std::cout << "extent['m'] is: " << extent['m'] << "\n";
+  std::cout << "extent['a'] is: " << extent['a'] << "\n";
   extent['b'] = 2;
+  std::cout << "extent['b'] is: " << extent['b'] << "\n";
   extent['c'] = 2;
+  std::cout << "extent['c'] is: " << extent['c'] << "\n";
   extent['d'] = 2;
+  std::cout << "extent['d'] is: " << extent['d'] << "\n";
   extent['e'] = 2;
+  std::cout << "extent['e'] is: " << extent['e'] << "\n";
   extent['f'] = 2;
+  std::cout << "extent['f'] is: " << extent['f'] << "\n";
   extent['g'] = 2;
+  std::cout << "extent['g'] is: " << extent['g'] << "\n";
   extent['h'] = 2;
+  std::cout << "extent['h'] is: " << extent['h'] << "\n";
 
   //print_map(extent);
 
@@ -159,10 +166,38 @@ int main(int argc, char** argv)
   for(int64_t i = 0; i < elementsC; i++)
       C[i] = floatTypeC(0);  //we initially put these elements to 0, the contraction will actually fill them up
 
+  for(int64_t i = 0; i < 8; i++)
+  {
+    for(int64_t j = 0; j <8; j++)
+    {
+        std::cout << int(B[i*8 + j]) << " ";
+    }
+    std::cout << "\n";
+  }
+  std::cout << "\n";
+
+  for(int64_t i = 0; i < 4; i++)
+  {
+    for(int64_t j = 0; j <4; j++)
+    {
+        std::cout << int(C[i*4 + j]) << " ";
+    }
+    std::cout << "\n";
+  }
+  std::cout << "\n";
+
   // Copy to device
   cudaMemcpy(C_d, C, sizeC, cudaMemcpyHostToDevice);
   cudaMemcpy(A_d, A, sizeA, cudaMemcpyHostToDevice);
   cudaMemcpy(B_d, B, sizeB, cudaMemcpyHostToDevice);
+
+  floatTypeA *A_check = (floatTypeA*) malloc(sizeof(floatTypeA) * elementsA);
+  floatTypeB *B_check = (floatTypeB*) malloc(sizeof(floatTypeB) * elementsB);
+  floatTypeC *C_check = (floatTypeC*) malloc(sizeof(floatTypeC) * elementsC);
+
+  cudaMemcpy(C_check, C_d, sizeC, cudaMemcpyDeviceToHost);
+  cudaMemcpy(A_check, A_d, sizeA, cudaMemcpyDeviceToHost);
+  cudaMemcpy(B_check, B_d, sizeB, cudaMemcpyDeviceToHost);
 
   printf("Allocate, initialize and transfer tensors\n");
 
