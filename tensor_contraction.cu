@@ -63,13 +63,13 @@ int main(int argc, char** argv)
   //=====================
 
   // Create vector of modes--ie, indices along each axis of tensor
-  std::vector<int> modeC{'a','b','m','u','n','v'};
+  std::vector<int> modeC{'a','b','c','d','g','h'};
   std::cout << "modeC: "; 
   print(modeC);
-  std::vector<int> modeA{'a','b','m','h','k','n'};
+  std::vector<int> modeA{'a','b','c','d','e','f'};
   std::cout << "modeA: "; 
   print(modeA);
-  std::vector<int> modeB{'u','k','v','h'};
+  std::vector<int> modeB{'e','f','g','h'};
   std::cout << "modeB: ";
   print(modeB);
   int nmodeA = modeA.size();
@@ -81,15 +81,15 @@ int main(int argc, char** argv)
 
   // Extents--size of each axis, ie the index runs from 0 to extent-1
   std::unordered_map<int, int64_t> extent;
-  extent['m'] = 2;
-  std::cout << "extent['m'] is: " << extent['m'] << "\n";
-  extent['n'] = 2;
-  extent['u'] = 2;
-  extent['v'] = 2;
-  extent['h'] = 2;
-  extent['k'] = 2;
   extent['a'] = 2;
+  std::cout << "extent['m'] is: " << extent['m'] << "\n";
   extent['b'] = 2;
+  extent['c'] = 2;
+  extent['d'] = 2;
+  extent['e'] = 2;
+  extent['f'] = 2;
+  extent['g'] = 2;
+  extent['h'] = 2;
 
   //print_map(extent);
 
@@ -152,9 +152,9 @@ int main(int argc, char** argv)
   floatTypeC *C = (floatTypeC*) malloc(sizeof(floatTypeC) * elementsC);
 
   // Initialize data on host
-  for(int64_t i = 0; i < elementsA; i++)
+  for(int64_t i = 1; i <= elementsA; i++)
       A[i] = floatTypeA(i+1); //A runs from 1 to 64
-  for(int64_t i = 0; i < elementsB; i++)
+  for(int64_t i = 1; i <= elementsB; i++)
       B[i] = floatTypeB(-1*i);  //B is all -1's, just to see which elements actually got manipulated
   for(int64_t i = 0; i < elementsC; i++)
       C[i] = floatTypeC(0);  //we initially put these elements to 0, the contraction will actually fill them up
@@ -321,6 +321,16 @@ int main(int argc, char** argv)
     for(int64_t j = 0; j <8; j++)
     {
         std::cout << int(C_res[i*8 + j]) << " ";
+    }
+    std::cout << "\n";
+  }
+  std::cout << "\n";
+
+  for(int64_t i = 0; i < 8; i++)
+  {
+    for(int64_t j = 0; j <8; j++)
+    {
+        std::cout << int(C_res[j*8 + i]) << " ";
     }
     std::cout << "\n";
   }
