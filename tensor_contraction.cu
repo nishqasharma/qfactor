@@ -166,6 +166,8 @@ int main(int argc, char** argv)
   for(int64_t i = 0; i < elementsC; i++)
       C[i] = floatTypeC(0);  //we initially put these elements to 0, the contraction will actually fill them up
 
+      std::cout << "=============================printing initialized data \n";
+
   for(int64_t i = 0; i < 8; i++)
   {
     for(int64_t j = 0; j <8; j++)
@@ -184,7 +186,7 @@ int main(int argc, char** argv)
     }
     std::cout << "\n";
   }
-  std::cout << "\n";
+  std::cout << "\n===============================done\n\n";
 
   // Copy to device
   cudaMemcpy(C_d, C, sizeC, cudaMemcpyHostToDevice);
