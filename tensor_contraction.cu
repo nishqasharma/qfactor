@@ -170,7 +170,7 @@ int main(int argc, char** argv)
   {
     for(int64_t j = 0; j <8; j++)
     {
-        std::cout << int(B[i*8 + j]) << " ";
+        std::cout << B[i*8 + j] << " ";
     }
     std::cout << "\n";
   }
@@ -180,7 +180,7 @@ int main(int argc, char** argv)
   {
     for(int64_t j = 0; j <4; j++)
     {
-        std::cout << int(C[i*4 + j]) << " ";
+        std::cout << C[i*4 + j] << " ";
     }
     std::cout << "\n";
   }
@@ -355,7 +355,7 @@ int main(int argc, char** argv)
   {
     for(int64_t j = 0; j <8; j++)
     {
-        std::cout << int(C_res[i*8 + j]) << " ";
+        std::cout << C_res[i*8 + j] << " ";
     }
     std::cout << "\n";
   }
@@ -365,7 +365,7 @@ int main(int argc, char** argv)
   {
     for(int64_t j = 0; j <8; j++)
     {
-        std::cout << int(C_res[j*8 + i]) << " ";
+        std::cout << C_res[j*8 + i] << " ";
     }
     std::cout << "\n";
   }
