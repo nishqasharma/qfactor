@@ -56,7 +56,7 @@ int main(int argc, char** argv)
   cutensorComputeType_t typeCompute = CUTENSOR_COMPUTE_32F;
 
   floatTypeCompute alpha = (floatTypeCompute)1.0f;
-  floatTypeCompute beta  = (floatTypeCompute)0.0f;
+  floatTypeCompute beta  = (floatTypeCompute)1.0f;
 
   printf("Include headers and define data types\n");
 
@@ -193,7 +193,7 @@ int main(int argc, char** argv)
   cudaMemcpy(A_d, A, sizeA, cudaMemcpyHostToDevice);
   cudaMemcpy(B_d, B, sizeB, cudaMemcpyHostToDevice);
 
-  floatTypeA *A_check = (floatTypeA*) malloc(sizeof(floatTypeA) * elementsA);
+  /*floatTypeA *A_check = (floatTypeA*) malloc(sizeof(floatTypeA) * elementsA);
   floatTypeB *B_check = (floatTypeB*) malloc(sizeof(floatTypeB) * elementsB);
   floatTypeC *C_check = (floatTypeC*) malloc(sizeof(floatTypeC) * elementsC);
 
@@ -219,7 +219,7 @@ int main(int argc, char** argv)
     }
     std::cout << "\n";
   }
-  std::cout << "\n===============================done\n\n";
+  std::cout << "\n===============================done\n\n"; */
 
   printf("Allocate, initialize and transfer tensors\n");
 
@@ -235,7 +235,7 @@ int main(int argc, char** argv)
               &descA,
               nmodeA,
               extentA.data(), //The std::vector::data() is an STL in C++ which returns a direct pointer to the memory array used internally by the vector to store its owned elements.
-              NULL,// stride
+              NULL,// stride -- means that the tensor is packed, not sparse
               typeA, CUTENSOR_OP_IDENTITY ) );
 
   cutensorTensorDescriptor_t descB;
@@ -383,15 +383,6 @@ int main(int argc, char** argv)
   }
   std::cout << "\n";
 
-  for(int64_t i = 0; i < 8; i++)
-  {
-    for(int64_t j = 0; j <8; j++)
-    {
-        std::cout << C_res[j*8 + i] << " ";
-    }
-    std::cout << "\n";
-  }
-  std::cout << "\n";
 
   if ( A ) free( A );
   if ( B ) free( B );
