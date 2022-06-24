@@ -201,6 +201,26 @@ int main(int argc, char** argv)
   cudaMemcpy(A_check, A_d, sizeA, cudaMemcpyDeviceToHost);
   cudaMemcpy(B_check, B_d, sizeB, cudaMemcpyDeviceToHost);
 
+  for(int64_t i = 0; i < 8; i++)
+  {
+    for(int64_t j = 0; j <8; j++)
+    {
+        std::cout << A_check[i*8 + j] << " ";
+    }
+    std::cout << "\n";
+  }
+  std::cout << "\n";
+
+  for(int64_t i = 0; i < 4; i++)
+  {
+    for(int64_t j = 0; j <4; j++)
+    {
+        std::cout << B_check[i*4 + j] << " ";
+    }
+    std::cout << "\n";
+  }
+  std::cout << "\n===============================done\n\n";
+
   printf("Allocate, initialize and transfer tensors\n");
 
   // ==============================
