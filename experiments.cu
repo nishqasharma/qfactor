@@ -258,7 +258,7 @@ int main(int argc, char** argv)
 
   for(int64_t j = 0; j <elementsC; j++)
     {
-        std::cout << C_res[i*8 + j] << " ";
+        std::cout << C_res[j] << " ";
     }
     std::cout << "\n";
 
