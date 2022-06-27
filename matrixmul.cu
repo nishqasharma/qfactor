@@ -160,21 +160,21 @@ int main(int argc, char** argv)
 
       std::cout << "=============================printing initialized data \n";
 
-  for(int64_t i = 0; i < 4; i++)
+  for(int64_t i = 0; i < 2; i++)
   {
-    for(int64_t j = 0; j <4; j++)
+    for(int64_t j = 0; j <2; j++)
     {
-        std::cout << A[i*4 + j] << " ";
+        std::cout << A[i*2 + j] << " ";
     }
     std::cout << "\n";
   }
   std::cout << "\n";
 
-  for(int64_t i = 0; i < 4; i++)
+  for(int64_t i = 0; i < 2; i++)
   {
-    for(int64_t j = 0; j <4; j++)
+    for(int64_t j = 0; j <2; j++)
     {
-        std::cout << B[i*4 + j] << " ";
+        std::cout << B[i*2 + j] << " ";
     }
     std::cout << "\n";
   }
