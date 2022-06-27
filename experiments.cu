@@ -96,12 +96,19 @@ int main(int argc, char** argv)
   floatTypeC *C = (floatTypeC*) malloc(sizeof(floatTypeC) * elementsC);
 
   // Initialize data on host
-  for(int64_t i = 0; i < elementsA; i++)
+  /*for(int64_t i = 0; i < elementsA; i++)
       A[i] = (((float) rand())/RAND_MAX - 0.5)*100;
   for(int64_t i = 0; i < elementsB; i++)
       B[i] = (((float) rand())/RAND_MAX - 0.5)*100;
   for(int64_t i = 0; i < elementsC; i++)
-      C[i] = (((float) rand())/RAND_MAX - 0.5)*100;
+      C[i] = (((float) rand())/RAND_MAX - 0.5)*100; */
+
+  for(int64_t i = 0; i < elementsA; i++)
+      A[i] = 1;
+  for(int64_t i = 0; i < elementsB; i++)
+      B[i] = 2;
+  for(int64_t i = 0; i < elementsC; i++)
+      C[i] = 3;
 
   // Copy to device
   cudaMemcpy(C_d, C, sizeC, cudaMemcpyHostToDevice);
@@ -272,5 +279,5 @@ int main(int argc, char** argv)
 
   printf("Successful completion\n");
 
-  return 0;
+  return 0; 
 }
